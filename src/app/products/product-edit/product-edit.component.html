@@ -74,12 +74,14 @@
                   type="button"
                   [title]="productForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
                   [disabled]="!productForm.valid"
-                  (click)="saveProduct()">
+                  (click)="saveProduct()"
+          >
             Save
           </button>
           <button class="btn btn-outline-secondary mr-3"
                   style="width:80px"
                   type="button"
+                  [routerLink]="['/products']"
                   title="Cancel your edits">
             Cancel
           </button>
@@ -87,7 +89,8 @@
                   style="width:80px"
                   type="button"
                   title="Delete this product"
-                  (click)="deleteProduct()">
+                  (click)="deleteProduct()"
+          >
             Delete
           </button>
         </div>
