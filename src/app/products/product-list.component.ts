@@ -32,10 +32,14 @@ export class ProductListComponent implements OnInit {
               private route: ActivatedRoute) {
   }
 
+
   ngOnInit(): void {
     this.listFilter = this.route.snapshot.queryParamMap.get('filterBy') || '';
     this.showImage = this.route.snapshot.queryParamMap.get('showImage') === 'true';
+    this.getProducts();
+  }
 
+  getProducts() {
     this.productService.getProducts().subscribe({
       next: products => {
         this.products = products;
@@ -53,6 +57,13 @@ export class ProductListComponent implements OnInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  delete(product: Product): void {
+    this.products = this.products.filter(p => p !== product);
+    this.productService.deleteProduct(product.id).subscribe();
+
+    this.getProducts();
   }
 
 }

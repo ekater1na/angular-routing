@@ -64,6 +64,11 @@
                       class="btn btn-outline-primary btn-sm">
                 Edit
               </button>
+              <button (click)="delete(product)"
+                      [routerLink]="['/products']"
+                      class="btn btn-outline-primary btn-sm">
+                Del
+              </button>
             </td>
           </tr>
         </tbody>
