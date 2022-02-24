@@ -63,7 +63,7 @@ export class ProductListComponent implements OnInit {
     this.products = this.products.filter(p => p !== product);
     this.productService.deleteProduct(product.id).subscribe();
 
-    this.getProducts();
+    // this.getProducts();
   }
 
 }

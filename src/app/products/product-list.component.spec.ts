@@ -1,25 +1,13 @@
 import {of} from "rxjs";
 import {ProductListComponent} from "./product-list.component";
-import {TestBed} from "@angular/core/testing";
-import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('ProductListComponent', () => {
+  let component: ProductListComponent;
   let PRODUCTS;
   let mockProductService;
   let mockActivatedRoute;
-  let component: ProductListComponent;
 
   beforeEach(() => {
-
-    TestBed.configureTestingModule({
-      declarations: [ProductListComponent],
-      providers: [
-        // {provide: ActivatedRoute, useValue: mockActivatedRoute},
-        // {provide: ProductService, useValue: mockProductService},
-        // {provide: Location, useValue: mockLocation},
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    });
 
     PRODUCTS = [
       {
@@ -90,24 +78,24 @@ describe('ProductListComponent', () => {
   describe('deleteProduct', () => {
 
     // mocking isolated code
-    xit('should remove the indicated product from the products list', () => {
+    it('should remove the indicated product from the products list', () => {
       mockProductService.deleteProduct.and.returnValue(of(true));
       component.products = PRODUCTS;
 
-      component.delete(PRODUCTS[0]);
+      component.delete(PRODUCTS[2]);
 
       expect(component.products.length).toBe(2)
     })
 
 
     // testing interactions
-    xit('should call deleteProduct', () => {
+    it('should call deleteProduct', () => {
       mockProductService.deleteProduct.and.returnValue(of(true));
       component.products = PRODUCTS;
 
-      component.delete(PRODUCTS[2].id);
+      component.delete(PRODUCTS[0]);
 
-      expect(mockProductService.deleteProduct).toHaveBeenCalledWith(PRODUCTS[2]);
+      expect(mockProductService.deleteProduct).toHaveBeenCalledWith(PRODUCTS[0].id);
     })
   })
 
